@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+!/src/main/java/leetcode/editor/cn/doc/
+!/src/main/java/leetcode/editor/cn/translation.json
+/target/
+/leetCode.iml
+/src/test/
+/.idea/
