@@ -50,17 +50,26 @@
 // 👍 717 👎 0
 
 package leetcode.editor.cn;
+
 //java:移除元素
-public class P27RemoveElement{
-    public static void main(String[] args){
+public class P27RemoveElement {
+    public static void main(String[] args) {
         Solution solution = new P27RemoveElement().new Solution();
     }
+
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int removeElement(int[] nums, int val) {
-      return 1;
+    class Solution {
+        public int removeElement(int[] nums, int val) {
+            int i = 0;
+            for (int j = 0; j < nums.length; j++) {
+                if (nums[j] != val) {
+                    nums[i] = nums[j];
+                    i++;
+                }
+            }
+            return i;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
