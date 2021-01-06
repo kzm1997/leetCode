@@ -25,18 +25,58 @@
 
 package leetcode.editor.cn;
 
+
 //java:实现 strStr()
 public class P28ImplementStrstr {
     public static void main(String[] args) {
         Solution solution = new P28ImplementStrstr().new Solution();
+
 
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int strStr(String haystack, String needle) {
+            int l = needle.length(), n = haystack.length();
+            for (int start = 0; start < n - l + 1; ++start) {
+                if (haystack.substring(start, start + l).equals(needle)) {
+                    return start;
+                }
+            }
+            return -1;
+        }
 
-            return 1;
+        /**
+         * 双指针
+         *
+         * @param haystack
+         * @param needle
+         * @return
+         */
+        public int strStr2(String haystack, String needle) {
+            int l = needle.length(), n = haystack.length();
+            if (l == 0) {
+                return 0;
+            }
+
+            int pn=0;
+            while (pn<n-l+1){
+                while (pn<n-l+1&&haystack.charAt(pn)!=needle.charAt(0)){
+                    ++pn;
+                }
+                int currentLen=0;
+                int pl=0;
+                while (pl<l && pn<n && haystack.charAt(pn)==needle.charAt(pl)){
+                    ++pn;
+                    ++pl;
+                    ++currentLen;
+                }
+                if (currentLen==l){
+                    return pn-l;
+                }
+                pn=pn-currentLen+1;
+            }
+            return -1;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
