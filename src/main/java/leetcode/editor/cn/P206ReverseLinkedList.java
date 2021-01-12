@@ -13,11 +13,14 @@
 package leetcode.editor.cn;
 
 import javax.swing.*;
+import java.util.LinkedList;
+import java.util.List;
 
 //java:反转链表
 public class P206ReverseLinkedList {
     public static void main(String[] args) {
         Solution solution = new P206ReverseLinkedList().new Solution();
+
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 
@@ -32,16 +35,41 @@ public class P206ReverseLinkedList {
 
     class Solution {
         public ListNode reverseList(ListNode head) {
-            ListNode prev=null;
-            ListNode cur=head;
-            while (cur!=null){
-                ListNode nextNode=cur.next;
-                cur.next=prev;
-                prev=cur;
-                cur=nextNode;
+            LinkedList<ListNode> stack = new LinkedList();
+            while (head != null) {
+                stack.push(head);
+                head = head.next;
             }
-            return  prev;
+            if (stack.isEmpty()) {
+                return null;
+            }
+            ListNode node = stack.pop();
+            ListNode dummy = node;
+            while (!stack.isEmpty()) {
+                ListNode tempNode = stack.pop();
+                node.next = tempNode;
+                node = node.next;
+            }
+            node.next = null;
+            return dummy;
         }
+
+    }
+
+
+    class Solution2 {
+        public ListNode reverseList(ListNode head) {
+            ListNode prev = null;
+            ListNode cur = head;
+            while (cur != null) {
+                ListNode nextNode = cur.next;
+                cur.next = prev;
+                prev = cur;
+                cur = nextNode;
+            }
+            return prev;
+        }
+
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
