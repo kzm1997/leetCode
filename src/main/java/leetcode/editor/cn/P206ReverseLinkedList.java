@@ -20,11 +20,21 @@ import java.util.List;
 public class P206ReverseLinkedList {
     public static void main(String[] args) {
         Solution solution = new P206ReverseLinkedList().new Solution();
+        ListNode node1=new ListNode(1);
+        ListNode node2=new ListNode(2);
+        ListNode node3=new ListNode(3);
+        ListNode node4=new ListNode(4);
+        node1.next=node2;
+        node2.next=node3;
+        node3.next=node4;
+        ListNode node = solution.reverseList(node1);
+        System.out.println(node.val);
+
 
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 
-    public class ListNode {
+    static public  class ListNode {
         int val;
         ListNode next;
 
@@ -55,6 +65,23 @@ public class P206ReverseLinkedList {
         }
 
     }
+
+    class Solution3 {
+        public ListNode reverseList(ListNode head) {
+          ListNode newNode=null;
+          while (head!=null){
+              ListNode temp=head.next;
+              head.next=newNode;
+              newNode=head;
+              head=temp;
+          }
+          return newNode;
+        }
+
+    }
+
+
+
 
 
     class Solution2 {
