@@ -58,7 +58,9 @@ public class P21MergeTwoSortedLists {
         node6.next=node7;
         node7.next=node8;
 
-        solution.mergeTwoLists(node1,node5);
+        //solution.mergeTwoLists(node1,node5);
+        ListNode listNode = solution.mergeTwoLists2(node1, node5);
+        System.out.println(1111);
 
     }
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -96,6 +98,74 @@ public class P21MergeTwoSortedLists {
                 l2.next = mergeTwoLists(l1, l2.next);
                 return l2;
             }
+        }
+
+        /**
+         * 双指针循环
+         * @param l1
+         * @param l2
+         * @return
+         */
+        public ListNode mergeTwoLists2(ListNode l1,ListNode l2){
+
+            ListNode head=null;
+
+            ListNode realHead=null;
+
+            while (l1!=null||l2!=null){
+
+                if (l1==null){
+                    if (head==null){
+                        head=new ListNode(l2.val);
+                        realHead=head;
+                    }else {
+                        head.next=new ListNode(l2.val);
+                    }
+                    l2=l2.next;
+                    if (head.next!=null){
+                        head=head.next;
+                    }
+                    continue;
+                }
+                if (l2==null){
+                    if (head==null){
+                        head=new ListNode(l1.val);
+                        realHead=head;
+                    }else {
+                        head.next=new ListNode(l1.val);
+                    }
+                    l1=l1.next;
+                    if (head.next!=null){
+                        head=head.next;
+                    }
+                    continue;
+                }
+                if (l1!=null&&l2!=null){
+                    if (l1.val<l2.val){
+                        if (head==null){
+                            head=new ListNode(l1.val);
+                            realHead=head;
+                        }else {
+                            head.next=new ListNode(l1.val);
+                        }
+                        l1=l1.next;
+                    }else {
+                        if (head==null){
+                            head=new ListNode(l2.val);
+                            realHead=head;
+                        }else {
+                            head.next=new ListNode(l2.val);
+                        }
+                        l2=l2.next;
+                    }
+                    if (head.next!=null){
+                        head=head.next;
+                    }
+                    continue;
+                }
+
+            }
+            return realHead;
         }
     }
 
