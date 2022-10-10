@@ -138,8 +138,23 @@ public class T86_PartitionList {
             
         }
 
+        /**
+         * 1轮:  small:0    shallHead: 0    large:0     largeHead:0
+         * 1轮:  small:1    shallHead:0      large:0     largeHead:0
+         * 1轮:  small:1    shallHead:0      large:4     largeHead:0
+         * 1轮:  small:1    shallHead:0      large: 3    largeHead:0
+         * 1轮:  small:2    shallHead:0      large:3     largeHead:0
+         * 1轮:  small:2    shallHead:0      large:5     largeHead:0
+         * 1轮:  small:2    shallHead:0      large:5     largeHead:0
+         * ---结束循环 0->1->2->2  0->4->3->5>2
+         * 0->1->2->2   0->4->3->5
+         * 0->1->2->2->4->3->5
+         * @param head
+         * @param x
+         * @return
+         */
         public ListNode partition2(ListNode head, int x) {
-            ListNode small = new ListNode(0);
+            ListNode small = new ListNode(0);  
             ListNode smallHead = small;
             ListNode large = new ListNode(0);
             ListNode largeHead = large;
