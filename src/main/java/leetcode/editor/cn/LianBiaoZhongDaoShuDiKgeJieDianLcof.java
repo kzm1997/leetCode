@@ -28,7 +28,7 @@ public class LianBiaoZhongDaoShuDiKgeJieDianLcof {
         int val;
         ListNode next;
 
-        ListNode(int x) {
+        ListNode(int x){
             val = x;
         }
     }
