@@ -1,9 +1,7 @@
 package leetcode.editor.cn.dataStruct;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import javax.xml.soap.Node;
+import java.util.*;
 
 public class BinaryTree {
 
@@ -14,6 +12,12 @@ public class BinaryTree {
         //System.out.println(binaryTree);
         
         preOrderTraveral(binaryTree);
+
+        System.out.println("---------------");
+        
+        preOrderTeravelByStack(binaryTree);
+        
+        
         
     }
 
@@ -71,6 +75,44 @@ public class BinaryTree {
             System.out.println(node.value);
         }
     }
-    
-    
+
+    /**
+     * 通过栈实现前序遍历
+     * //什么时候进栈,什么时候出栈?
+     * //循环条件是什么
+     * 
+     * @param node
+     */
+    public static void  preOrderTeravelByStack(TreeNode node){
+        Stack<TreeNode> stack=new Stack<>();
+        
+        while (node!=null||!stack.isEmpty()){
+            if (node==null){
+                TreeNode root=stack.pop();
+                node=root.rightChild;
+                continue;
+            }
+            System.out.println(node.value);
+            stack.push(node);
+            node=node.leftChild;
+            
+        }
+    }
+
+    /**
+     * 通过栈实现中序遍历
+     * @param node
+     */
+    public static void inOrderTeravelByStack(TreeNode node){
+        Stack<TreeNode> stack=new Stack<>();
+        
+        while (node!=null||!stack.isEmpty()){
+              if (node!=null){
+                  node=node.leftChild;
+                  
+              }else {
+                  
+              }
+        }
+    }    
 }
