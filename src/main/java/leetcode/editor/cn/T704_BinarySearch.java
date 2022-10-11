@@ -36,8 +36,22 @@ public class T704_BinarySearch{
         // TO TEST
 
         int search = solution.search(new int[]{1, 4, 7, 9, 10, 23, 33, 44, 45, 46, 80},2333);
-
         System.out.println(search);
+        
+        //
+        System.out.println(true&&false||true&&true);
+        System.out.println(4.1>=4);
+        System.out.println(1+2+"3");
+
+        int f = 0;
+        int g = 1;
+        for (int i = 0; i <= 15; i++)
+        {
+            System.out.println(f+"  "+g);
+            f = f + g;
+            g = f - g;
+        }
+        
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
@@ -64,6 +78,8 @@ class Solution {
         }
         return -1;
     }
+    
+    
     
  
     
