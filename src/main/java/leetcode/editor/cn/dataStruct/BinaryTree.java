@@ -1,5 +1,7 @@
 package leetcode.editor.cn.dataStruct;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 import javax.xml.soap.Node;
 import java.util.*;
 
@@ -11,19 +13,25 @@ public class BinaryTree {
         TreeNode binaryTree = createBinaryTree(list);
         //System.out.println(binaryTree);
 
-        preOrderTraveral(binaryTree);
+/*        preOrderTraveral(binaryTree);
 
         System.out.println("---------------");
 
         preOrderTeravelByStack(binaryTree);
 
         System.out.println("-----");
-        
+
         inOrderTraveral(binaryTree);
 
         System.out.println("-------------------");
-        
-        inOrderTeravelByStack(binaryTree);
+
+        inOrderTeravelByStack(binaryTree);*/
+
+        postOrderTravel(binaryTree);
+
+        System.out.println("--------------------");
+
+        postOrderTeravelByStack(binaryTree);
 
 
     }
@@ -76,7 +84,7 @@ public class BinaryTree {
     }
 
     public static void postOrderTravel(TreeNode node) {
-        if (node == null) {
+        if (node != null) {
             postOrderTravel(node.leftChild);
             postOrderTravel(node.rightChild);
             System.out.println(node.value);
@@ -121,8 +129,38 @@ public class BinaryTree {
             } else {
                 node = stack.pop();
                 System.out.println(node.value);
-                node=node.rightChild;
+                node = node.rightChild;
             }
         }
+    }
+
+
+    /**
+     * 后序遍历
+     *
+     * @param node
+     */
+    public static void postOrderTeravelByStack(TreeNode node) {
+        Stack<TreeNode> stack = new Stack<>();
+
+        TreeNode pre = null;
+
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                stack.push(node);
+                node = node.leftChild;
+            }
+            node = stack.pop();
+            if (node.rightChild == null || node.rightChild == pre) {
+                System.out.println(node.value);
+                pre = node;
+                node = null;
+            } else {
+                stack.push(node);
+                node = node.rightChild;
+            }
+
+        }
+
     }
 }
