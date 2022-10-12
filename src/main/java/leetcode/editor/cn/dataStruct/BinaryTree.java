@@ -25,13 +25,15 @@ public class BinaryTree {
 
         System.out.println("-------------------");
 
-        inOrderTeravelByStack(binaryTree);*/
+        inOrderTeravelByStack(binaryTree);
 
         postOrderTravel(binaryTree);
 
         System.out.println("--------------------");
 
-        postOrderTeravelByStack(binaryTree);
+        postOrderTeravelByStack(binaryTree);*/
+        
+        levelOrderTervelByQueue(binaryTree);
 
 
     }
@@ -159,8 +161,27 @@ public class BinaryTree {
                 stack.push(node);
                 node = node.rightChild;
             }
-
         }
+    }
 
+
+    public static void levelOrderTervelByQueue(TreeNode node) {
+        Queue<TreeNode> queue = new ArrayDeque<>();
+
+        if (node == null) {
+            return;
+        }
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            TreeNode poll = queue.poll();
+            System.out.println(poll.value);
+            if (poll.leftChild != null) {
+                queue.add(poll.leftChild);
+            }
+            if (poll.rightChild != null) {
+                queue.add(poll.rightChild);
+            }
+        }
     }
 }
