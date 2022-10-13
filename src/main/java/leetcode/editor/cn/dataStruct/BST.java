@@ -171,6 +171,8 @@ public class BST<Key extends Comparable<Key>, Value> {
     public Node deleteBySelf(Key key){
       return   deleteBySelf(root,key);
     }
+    
+    
 
 
     public Node deleteBySelf(Node x, Key key) {
@@ -187,7 +189,7 @@ public class BST<Key extends Comparable<Key>, Value> {
                 return x.right;
             }
             if (x.right == null && x.left != null) {
-                return x.left;
+                return x.left; 
             }
             if (x.left != null && x.right != null) {
                //定义一个current节点
@@ -207,6 +209,9 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
         return x;
     }
+    
+    
+    
 
 
 }
