@@ -10,7 +10,7 @@ public class AvlTree {
 
 
     public static void main(String[] args) {
-        AvlTree avlTree=new AvlTree();
+/*        AvlTree avlTree=new AvlTree();
         avlTree.insert(10);
         avlTree.insert(6);
         avlTree.insert(12);
@@ -24,6 +24,47 @@ public class AvlTree {
         
   
         System.out.println(avlTree);
+
+        System.out.println(avlTree.getNode(avlTree.root,6).value);
+        
+        avlTree.rightRotate(avlTree.getNode(avlTree.root, 6));
+
+        System.out.println(avlTree);*/
+        
+        AvlTree avlTree=new AvlTree();
+        
+        avlTree.insert(4);
+        avlTree.insert(2);
+        avlTree.insert(8);
+        avlTree.insert(1);
+        avlTree.insert(3);
+        avlTree.insert(6);
+        avlTree.insert(10);
+        avlTree.insert(5);
+        avlTree.insert(7);
+        avlTree.insert(9);
+        avlTree.insert(12);
+        avlTree.insert(13);
+        
+        
+        avlTree.leftRotate(avlTree.getNode(avlTree.root,4));
+
+        System.out.println(avlTree);
+        
+    }
+    
+    
+    
+    public TreeNode getNode(TreeNode root,int value){
+        if (root==null){
+            return null;
+        }
+        if (root.value<value){
+            return getNode(root.right,value);
+        }else if (root.value>value){
+            return getNode(root.left,value);
+        }
+        return root;
     }
     
 
@@ -89,7 +130,7 @@ public class AvlTree {
         }
         
         //平衡二叉树
-        avlNode(newNode);
+       // avlNode(newNode);
     }
 
     private void avlNode(TreeNode node) {
@@ -165,10 +206,10 @@ public class AvlTree {
          * 当前节点成为原左儿子的右儿子，原左儿子成当前节点的父亲
          */
         // 当前节点的左子节点父节点 更换成 当前节点父节点
-        replaceSubNode(left,node.parent);
+        replaceSubNode(left,node.parent); //将左子节点与当前节点的父节点关联,因为当前节点成为了左子节点的右节点
 
         // 当前节点的原左子节点 替换成 当前节点的父节点，原左子节点的右子节点 更换成 当前节点
-        replaceParentRight(node, left);
+        replaceParentRight(node, left);  //将当前节点成为原左子节点的右节点.
         return node;
     }
 
@@ -182,16 +223,16 @@ public class AvlTree {
         // 当前节点的右子节点
         TreeNode right = node.right;
         // 原右子节点的左子节点 替换到 当前节点的右子节点
-        replaceParentRight(right.left,node);
+        replaceParentRight(right.left,node); //将6,57挂到4的右子树
 
         /*
          * 当前节点和原右子节点，更换父子关系。
          * 当前节点成为原右儿子的左儿子，原右儿子成当前节点的父亲
          */
         // 当前节点的右子节点父节点 更换成 当前节点父节点，
-        replaceSubNode(right,node.parent);
+        replaceSubNode(right,node.parent);  //将原右节点挂到原父节点的父节点下
         // 当前节点的原右子节点 更换成 当前节点的父节点，原右子节点的左子节点 更换成 当前节点
-        replaceParentLeft(node, right);
+        replaceParentLeft(node, right); //4将挂到8的左子树
         return node;
     }
 
